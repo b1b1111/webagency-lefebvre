@@ -1,0 +1,784 @@
+@font-face
+{
+    font-family: 'FontAwesome';
+    src: url('../webagency_images/fonts/fontawesome-webfont.eot');
+    src: url('../webagency_images/fonts/fontawesome-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../webagency_images/fonts/fontawesome-webfont.woff') format('woff'),
+         url('../webagency_images/fonts/fontawesome-webfont.ttf') format('truetype'),
+         url('../webagency_images/fonts/fontawesome-webfont.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face
+{
+    font-family: 'glyphicons';
+    src: url('../webagency_images/fonts/glyphicons-halflings-regular.eot');
+    src: url('../webagency_images/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+         url('../webagency_images/fonts/glyphicons-halflings-regular.woff') format('woff'),
+         url('../webagency_images/fonts/glyphicons-halflings-regular.ttf') format('truetype'),
+         url('../webagency_images/fonts/glyphicons-halflings-regular.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*----------------------Element de la page global-----------------------*/
+header
+{
+	position: relative;
+	margin-top: 90px;
+	overflow-x: hidden;
+}
+p
+{
+	color: rgb(123, 126, 130)
+}
+body
+{
+	font-family: 'Roboto','FontAwesome', 'glyphicons', Arial, Helvetica, sans-serif;
+	margin: 0;
+	overflow-x: hidden;
+}
+h2
+{
+	color: rgb(39, 39, 39);
+}
+bold
+{
+	font-size: 1.1em;
+	font-weight: bold;
+	color: rgb(92, 173, 211);
+}
+.paragraphe
+{
+	text-align: center;
+	margin: 40px 300px 40px 300px;
+}
+.title
+{
+	text-align: center;
+	font-size: 3.0em;
+	text-transform: uppercase;
+}
+.gmap
+{
+	display: none;
+}
+/*-------------------DELIMITEUR-------------------------*/
+h1.title
+{
+	position: relative;
+	color: rgb(39, 39, 39);
+	text-align: center;
+}
+h1.title::before
+{
+	position: absolute;
+	display: block;
+	content: "";
+	height: 1px;
+	width: 140px;
+	background-color: rgba(123, 126, 130,0.2);
+	left: calc(50% - 70px);
+	bottom: calc(40% - 36px);
+}
+h1.title::after
+{
+	box-sizing: border-box;
+	position: absolute;
+	display: block;
+	content: "";
+	height: 22px;
+	width: 22px;
+	border-radius: 50%;
+	background-color: rgb(92, 173, 211); 
+	border: 4px solid white;
+	left: calc(50% - 10px);
+	bottom: calc(-25% - 10px);
+}
+
+/*----------------------------------HEADER---------------------------*/
+
+#menu
+{
+	position: fixed;				/*position fixed pour créer le menu figé et defilant sur la page*/
+	top: 0px;						/*top et bottom 0px pour le placer correctement sur la page*/
+	bottom: 0px;
+	width: 100%;					/*taille reel de l'image individuelle*/
+	height: 90px;					/*taille du bandeau menu*/
+	z-index: 98;					/*Placement du menu continuel sur la page*/
+	display: flex;
+	justify-content: space-between;
+	background-color: rgb(255, 253, 250);
+}
+#menu img
+{
+	display: inline-block;			/*inline-block et vertical-align pour passer le menu en horizontal*/
+	height: 57px;
+	width: 261px;
+	vertical-align: top;			
+	margin: 15px 0px 10px 95px;
+	transform: scale(0.85);
+}
+
+nav
+{
+	display: inline-block;			/*idem, pour l'alignement horizontal inline-block et vertical-align.*/
+	vertical-align: top;
+	margin-right: 125px;
+}
+nav ul
+{
+	list-style-type: none;			/*list style type none pour enlever les point de la liste */
+
+}
+nav li
+{
+	margin-right: 10px;				/*margin et padding pour le placement dans le menu. inline-block pour le menu horizontal*/
+	margin-top: 18px;
+	display: inline-block;
+	font-size: 0.7em;
+	color: rgb(125, 125, 125);
+}
+nav a
+{	
+	padding: 0 10px 2px 10px;
+	font-size: 1.2em;
+	text-decoration: none;
+	color: rgb(125, 125, 125)
+}
+nav a.active:hover
+{
+	padding-top: 30px; 
+	border-top: 4px solid rgb(92, 173, 211);
+}
+
+
+/*--------------------------Banner-------------------------*/
+
+#slider
+{
+	position: relative;
+	width: 100%;						/*Pour la fenêtre une largeur 'width' pour la rendre responsive*/
+	overflow: hidden;					/*overflow pour cacher ce qui dépasse (reste encadré)*/
+}
+#slider figure
+{
+	position: relative;				/*La font-size: 0 "aspire l’air autout de l’élément figure" en retirant les espaces entre les images et autour. position: relative permet à la figure d’être déplacée facilement pendant l’animation. text-align: left est là en raison d’un bug de Safari 5 pour Windows.*/
+	width: 500%;					/*la largeur de figure est un pourcentage, qui est un multiple de la div qui le contient.Si la bande d’images contient cinq images, et que notre div n’en montre qu’une, la figure est 5x plus large, c’est à dire 500% la largeur de la div.*/
+	margin: 0%;
+	padding: 0%;
+	font-size: 0%;
+	text-align: left;
+	animation: 30s slide infinite; /*Appel de l'animation*/
+}
+#slider figure img
+{
+	width: 20%;						/*repartition des images dans la figure, içi 5 images donc 100%/5 = 20%*/
+	height: 480px;
+	float: left;					/*float : left pour corriger egalement un bug safari 5 windows*/
+}
+@keyframes slide
+{
+	0% {left: 0%;}					
+	20% {left: 0%;}
+	25% {left: -100%;}
+	45% {left: -100%;}
+	50% {left: -200%;}
+	70% {left: -200%;}
+	75% {left: -300%;}
+	95% {left: -300%;}
+	100% {left: -400%;}
+}
+
+#timeline {
+	position: relative;
+	display: block;
+    bottom: 4px;
+    left: 0px;
+    height: 4px;
+    background: rgba(28,28,28,0.3);
+    width: 100%;
+}
+#timeline::before {
+	display: block;
+	content: "";
+    height: 100%;
+    background: rgba(92, 173, 211);
+    animation: timeliner 30s infinite ease;
+}
+@keyframes timeliner {
+	0% {width: 0%;}					
+	20% {width: 25%;}
+	25% {width: 50%;}
+	45% {width: 50%;}
+	50% {width: 75%;}
+	70% {width: 75%;}
+	75% {width: 100%;}
+	95% {width: 100%;}
+	99% {width: 0%;}
+}
+
+div.fleche_slider
+{
+	position: absolute;
+	height: 60px;
+	width: 60px; 
+	border-radius: 50%; 
+    background-color: rgba(28, 28, 28, 0.3);
+	left: -30px;
+	top: calc(50% - 30px);
+}
+div.fleche_slider_right
+{
+	position: absolute;
+	height: 60px;
+	width: 60px;  
+	border-radius: 50%;
+    background-color: rgba(28, 28, 28, 0.3);
+	right: -30px;
+	top: calc(50% - 30px);
+}
+div.fleche_slider i
+{
+	position: absolute;
+	line-height: 60px;
+	font-size: 1.8em;
+	color: white; 
+	right: 12px;
+}
+div.fleche_slider_right i
+{
+	position: absolute;
+	line-height: 60px;
+	font-size: 1.8em;
+	color: white;
+	left: 12px;
+}
+
+#text_banner
+{
+	position: absolute;
+	top: 200px;
+	left: 90px;
+	background: none;
+	font-family:'Roboto','FontAwesome', Arial, sans-serif;
+}
+#text_banner p
+{
+	background: none;
+	font-size: 0.8em;
+	font-weight: bold;
+	color: aliceblue;
+	margin-top: -5px;
+}
+#text_banner h1
+{
+	background: none;
+	font-size: 2em;
+	color: aliceblue;
+}
+#text_banner strong
+{
+	background: none;
+	color: rgb(92, 173, 211);
+}
+#bouton_banner
+{
+	position: absolute;
+	display: block;
+	height: 35px;
+	width: 100px;
+	top: 350px;
+	left: 90px;
+    background-color: rgb(92, 173, 211);
+	border: 1px solid rgb(76, 132, 161);
+	box-shadow: 0px 2px 1px rgb(76, 132, 161);
+    border-radius: 3px;
+}
+#bouton_banner a
+{
+	position: absolute;
+	top: 9px;
+	left: 9px;
+	font-size: 1em;
+	font-weight: bold;
+	color: white;
+	text-decoration: none;
+	font-family:'Roboto','FontAwesome', Arial, sans-serif;
+}
+
+/*---------------------- SECTION SERVICE--------------------------*/
+
+#service
+{
+	font-family:'FontAwesome', 'glyphicons', Arial, Helvetica, sans-serif;
+}
+#service_body
+{
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-around;
+}
+.mac
+{
+	width: 510px;
+	height: 319px;	
+	margin-left: calc(30% - 255px);
+}
+
+#list_service ul
+{
+	margin: 90px 100px 15px 100px;
+	list-style-type: none;
+	color: rgb(123, 126, 130);
+	font-size: 0.9em;	
+}
+#list_service h2
+{
+	color: black;
+	font-weight: bold;
+}
+/*---------ICONE LISTE SERVICE-----------*/
+div.icone
+{
+	position: absolute;
+	margin-top: 20px;
+	height: 55px;
+	width: 55px;
+	border-radius: 50%;
+	border: 1px solid rgba(123, 126, 130,0.3);
+	text-align: center;
+	margin-left: -80px;
+}
+div.icone i
+{
+	line-height: 55px;
+	font-size: 1.5em;
+	color: rgb(92, 173, 211); 
+}
+div.icone::after
+{
+	position: absolute;
+	box-sizing: border-box;
+	content: "";
+	height: 16px;
+	width: 16px;
+	border-radius: 50%;
+	background-color: rgb(92, 173, 211);
+	border: 2px solid white;
+	top: calc(50% - 8px);
+	right: -7px;
+
+}
+
+/*------------------------PROJET------------------------*/
+
+
+#nav_projet
+{
+	text-align: center;
+	margin: auto;
+	list-style-type: none;
+	font-size: 0.9em;
+	height: 70px;
+}
+#nav_projet ul
+{
+	padding: 0;
+}
+#nav_projet li
+{
+	display: inline-block;
+}
+#nav_projet li:first-of-type a
+{
+	border-radius: 5px 0 0 5px;
+}
+#nav_projet li:last-of-type a
+{
+	border-radius: 0 5px 5px 0;
+}
+#nav_projet li a
+{
+	padding: 10px;
+	background-color: rgb(229, 229, 229);
+	color: rgb(123, 126, 130);
+	text-align: center;
+	text-decoration: none ;
+}
+#nav_projet li a:hover
+{  
+	position: relative;
+	background-color:#5CADD3;
+	box-shadow:0px 3px 0px #438AAC;
+	color: #fff;
+}
+.fa-caret-down
+{
+	position: absolute;
+	bottom: -16px;
+	left: calc(50% - 7px);
+    color: #438AAC;
+	font-size: 1.5em;
+	opacity: 0;
+}
+#nav_projet li:hover .fa-caret-down
+{
+	opacity: 1;
+}
+
+/*-----------------Portfolio------------------*/
+figure
+{
+    margin: 20px;
+}
+.portfolio 
+{
+	position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.image_folio img 
+{
+	display: inline-block;
+	height: 183px;
+	width: 280px;
+}
+.legende
+{
+    opacity: 0;
+    width: 280px;
+    height: 70px;
+    position: absolute;
+	text-align: left;
+	margin-top: -74px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+}
+.legende h4 
+{
+    margin: 0;
+	padding: 15px 15px 5px 10px;
+}
+.legende h4 em
+{
+	font-size: 0.9em;
+	font-weight: normal;
+}
+
+.fa-eye
+{
+    position: absolute;
+    bottom: 50px;
+    left: 80%;
+    padding: 10px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background-color: rgb(92, 173, 211);
+    text-align: center;
+    color: white;
+    font-size: 0.9em;
+}
+
+figure:hover figcaption
+{
+opacity:1;
+}
+
+/*-------------------------------CONTACT-----------------------------------------*/
+#contact
+{
+	position: relative;
+}
+
+.map-responsive 
+{
+	height:650px;
+	width: 100%;
+	background-color: #5CADD3;	
+}   
+
+.map-responsive iframe 
+{
+	width:100%;
+	height: 650px;
+	opacity: 0.6;
+	border: none;
+}
+
+form 
+{
+	position: absolute;
+	top: 40px;
+	right: 120px;
+	margin: 0 auto;
+	width: 310px;
+	padding: 0.8em;
+	border: 1px solid #CCC;
+	background-color: #fff;
+	background-color: rgba(255, 255, 255, 0.8);
+  }
+  
+  form div + div {
+	margin-top: 0.5em;
+  }
+  
+  label {
+	/* Les étiquettes ont la même taille et sont alignées */
+	display: inline-block;
+	width: 150px;
+	text-align: right;
+	background-color: rgba(255, 255, 255, 1);
+  }
+  
+  input, textarea 
+  {
+	/* Pour que tous les champs texte aient la même dimension */
+	width: 310px;
+	padding: 5px 5px 5px 5px;
+	box-sizing: border-box;
+	border: 1px solid rgb(190, 189, 189);
+	font: 0.9em 'roboto';
+	border-radius: 4px;
+  }
+  textarea 
+  {
+	height: 14%;
+	resize: none;
+  }
+
+  button
+  {
+	  padding: 6px 10px 6px 10px;
+	  border-radius: 3px;
+	  border: #CCC;
+	  background-color:rgb(92, 173, 211);
+	  box-shadow:0px 3px 0px #438AAC;
+	  font-weight: bold;
+	  color: #fff;
+	  font-size: 0.8em;
+  }
+
+  .adresse
+  {
+	  text-decoration: none;
+	  color: gray;
+  }
+  .tel
+  {
+	  text-decoration: none;
+	  color: rgb(92, 173, 211);
+	  font-weight: bold;
+  }
+
+
+
+  /*----------------------------MEDIA QUERIES MAX WIDTH 1024PX------------------------------*/
+
+  @media screen and (max-width: 1024px)
+  {
+	#page
+	{
+		width: auto;
+	}
+	#menu img
+	{
+		position: absolute;			
+		left: calc(50% - 130.5px);
+		transform: scale(0.72);
+		margin: 10px 0 0 0;
+	}
+	
+	header ul
+	{
+		margin: auto;
+		padding:0px;
+		position: absolute;
+		left: calc(50% - 162px);
+		top: 50px;
+
+	}
+	nav a.active:hover
+	{
+		padding-top: 64px; 
+	}
+	
+	  /*---------------SLIDER--------------*/
+	#slider
+	{
+		display: none;
+	}
+	div.fleche_slider
+	{
+		display: none;
+	}
+	div.fleche_slider_right
+	{
+		display: none;
+	}
+	#text_banner
+	{
+		display: none;
+	}
+	#bouton_banner
+	{
+		display: none;
+	}
+
+	.paragraphe
+	{
+		text-align: center;
+		margin: 0;	
+	}
+
+	/*-----------------SERVICE-----------*/
+
+	#service_body
+	{
+		flex-flow: wrap;
+	}
+	.mac
+	{
+		margin: 0 auto;
+		transform: scale(0.8);
+	}
+	#list_service ul 
+	{
+		margin-top: 10px;
+	}
+
+	/*--------------PROJET------------*/
+	#nav_projet 
+	{
+		padding-top: 15px;
+	}
+
+	/*-------------CONTACT-----------*/
+
+	form, input, textarea 
+	  {
+		  width: 250px;
+		  right: 40px;
+	  }
+	textarea
+	{
+		height: 140px;
+	}
+
+  }
+
+  /*-----------------------------MEDIA QUERIES MAX WIDTH 760PX---------------------*/
+  @media all and (max-width: 760px)
+  {
+	/*-------CONTACT-------*/
+
+	.map-responsive
+	{
+		display: none;
+	}
+	#formulaire
+	{
+		text-align: center;
+	}
+	.gmap
+	{
+		display: initial;
+		height: 60px;
+		width: 60px;
+	}
+	form 
+	{
+		border: none;
+		top: 0;
+	}
+	form, input, textarea, label
+	{
+		position: relative;
+		left: 0;
+		width: 250px;
+	}
+  }
+
+  /*-----------------------------MEDIA QUERIE MAX WIDTH 480PX-----------------------*/
+
+  @media all and (max-width: 480px)
+  {
+
+	/*-----------GENERAL-----------*/
+	
+	
+	header ul
+	{
+		font-size: 0.8em;
+		left: calc(50% - 142px);
+	}
+
+	.title 
+	{
+		font-size: 2.2em;
+	}
+	
+	.paragraphe 
+	{
+		text-align: center;
+		margin: 0;
+	}
+
+	h1.title::before
+	{
+		bottom: calc(40% - 31px);
+	}
+	h1.title::after
+	{
+		bottom: calc(-40% - 10px);
+	}
+
+	div.icone
+	{
+		transform: scale(0.75);
+		margin: -19px 0px 0 90px;
+	}
+
+
+	/*---------SERVICE--------*/
+
+
+	#list_service ul
+	{
+		padding: 0;
+		margin: 0 15px 0 15px;
+		text-align: justify;
+		font-size: 0.9em;
+	}
+	#list_service h2
+	{
+		font-size: 1.2em;
+	}
+
+	/*--------PROJET-------*/
+	#nav_projet
+	{
+		margin-top: 15px;
+	}
+	#nav_projet li
+	{
+		display: inline;
+		font-size: 0.8em;
+	}
+	.fa-caret-down
+	{
+		top: 30px;
+	}
+
+	/*--------CONTACT-------*/
+	form 
+	{
+		top: 0;
+	}
+  }
+
+
+  
